@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="A small collection of useful browser-based developer tools made by izzy.js.">
+  <title>Internet Toolbox</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <header class="hero">
+      <p class="eyebrow">tools.izzyy.me</p>
+      <h1>Internet Toolbox</h1>
+      <p>
+        Simple developer utilities that run directly in your browser.
+        No accounts, no setup, no unnecessary stuff.
+      </p>
+
+      <input
+        id="tool-search"
+        class="search"
+        type="search"
+        placeholder="Search tools..."
+        autocomplete="off"
+        aria-label="Search tools"
+      >
+    </header>
+
+    <main>
+      <section>
+        <h2>Developer</h2>
+
+        <div class="tool-list">
+          <article class="tool" data-search="json formatter validator developer">
+            <button class="tool-header" type="button" aria-expanded="false">
+              <span>
+                <strong>JSON Formatter</strong>
+                <small>Format, minify, and validate JSON.</small>
+              </span>
+              <span class="toggle">+</span>
+            </button>
+
+            <div class="tool-body">
+              <label for="json-input">JSON</label>
+              <textarea id="json-input" spellcheck="false" placeholder='{"hello":"world"}'></textarea>
+
+              <div class="actions">
+                <button type="button" data-action="json-format">Format</button>
+                <button type="button" data-action="json-minify">Minify</button>
+                <button type="button" data-action="json-clear" class="secondary">Clear</button>
+              </div>
+
+              <p id="json-status" class="status"></p>
+            </div>
+          </article>
+
+          <article class="tool" data-search="base64 encode decode developer text">
+            <button class="tool-header" type="button" aria-expanded="false">
+              <span>
+                <strong>Base64</strong>
+                <small>Encode or decode Base64 text.</small>
+              </span>
+              <span class="toggle">+</span>
+            </button>
+
+            <div class="tool-body">
+              <label for="base64-input">Text</label>
+              <textarea id="base64-input" spellcheck="false" placeholder="Enter text..."></textarea>
+
+              <div class="actions">
+                <button type="button" data-action="base64-encode">Encode</button>
+                <button type="button" data-action="base64-decode">Decode</button>
+                <button type="button" data-copy-target="base64-input" class="secondary">Copy</button>
+              </div>
+
+              <p id="base64-status" class="status"></p>
+            </div>
+          </article>
+
+          <article class="tool" data-search="uuid generator random developer">
+            <button class="tool-header" type="button" aria-expanded="false">
+              <span>
+                <strong>UUID Generator</strong>
+                <small>Generate random UUID v4 values.</small>
+              </span>
+              <span class="toggle">+</span>
+            </button>
+
+            <div class="tool-body">
+              <label for="uuid-output">UUID</label>
+              <input id="uuid-output" type="text" readonly placeholder="Generate a UUID...">
+
+              <div class="actions">
+                <button type="button" data-action="uuid-generate">Generate</button>
+                <button type="button" data-copy-target="uuid-output" class="secondary">Copy</button>
+              </div>
+            </div>
+          </article>
+
+          <article class="tool" data-search="password generator random security developer">
+            <button class="tool-header" type="button" aria-expanded="false">
+              <span>
+                <strong>Password Generator</strong>
+                <small>Create a random password locally.</small>
+              </span>
+              <span class="toggle">+</span>
+            </button>
+
+            <div class="tool-body">
+              <div class="inline-fields">
+                <div>
+                  <label for="password-length">Length</label>
+                  <input id="password-length" type="number" min="8" max="64" value="20">
+                </div>
+
+                <label class="check">
+                  <input id="password-symbols" type="checkbox" checked>
+                  Include symbols
+                </label>
+              </div>
+
+              <label for="password-output">Password</label>
+              <input id="password-output" type="text" readonly>
+
+              <div class="actions">
+                <button type="button" data-action="password-generate">Generate</button>
+                <button type="button" data-copy-target="password-output" class="secondary">Copy</button>
+              </div>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section>
+        <h2>Discord</h2>
+
+        <div class="tool-list">
+          <article class="tool" data-search="discord timestamp generator unix time">
+            <button class="tool-header" type="button" aria-expanded="false">
+              <span>
+                <strong>Discord Timestamp</strong>
+                <small>Generate Discord timestamp markup.</small>
+              </span>
+              <span class="toggle">+</span>
+            </button>
+
+            <div class="tool-body">
+              <label for="timestamp-date">Date & time</label>
+              <input id="timestamp-date" type="datetime-local">
+
+              <label for="timestamp-style">Style</label>
+              <select id="timestamp-style">
+                <option value="R">Relative — 2 hours ago</option>
+                <option value="F">Long date/time — Monday, August 24, 2026 10:30 PM</option>
+                <option value="f">Short date/time — August 24, 2026 10:30 PM</option>
+                <option value="D">Long date — August 24, 2026</option>
+                <option value="d">Short date — 08/24/2026</option>
+                <option value="T">Long time — 10:30:00 PM</option>
+                <option value="t">Short time — 10:30 PM</option>
+              </select>
+
+              <label for="timestamp-output">Discord code</label>
+              <input id="timestamp-output" type="text" readonly>
+
+              <div class="actions">
+                <button type="button" data-action="timestamp-generate">Generate</button>
+                <button type="button" data-copy-target="timestamp-output" class="secondary">Copy</button>
+              </div>
+            </div>
+          </article>
+
+          <article class="tool" data-search="discord snowflake decoder id account creation timestamp">
+            <button class="tool-header" type="button" aria-expanded="false">
+              <span>
+                <strong>Snowflake Decoder</strong>
+                <small>Decode a Discord snowflake ID.</small>
+              </span>
+              <span class="toggle">+</span>
+            </button>
+
+            <div class="tool-body">
+              <label for="snowflake-input">Discord ID</label>
+              <input id="snowflake-input" type="text" inputmode="numeric" placeholder="1313630076809510975">
+
+              <div class="actions">
+                <button type="button" data-action="snowflake-decode">Decode</button>
+              </div>
+
+              <div id="snowflake-result" class="result muted">
+                Enter a Discord ID to decode it.
+              </div>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section>
+        <h2>Web & Text</h2>
+
+        <div class="tool-list">
+          <article class="tool" data-search="color converter hex rgb hsl css web">
+            <button class="tool-header" type="button" aria-expanded="false">
+              <span>
+                <strong>Color Converter</strong>
+                <small>Convert HEX colors to RGB and HSL.</small>
+              </span>
+              <span class="toggle">+</span>
+            </button>
+
+            <div class="tool-body">
+              <label for="color-input">HEX</label>
+              <div class="color-row">
+                <input id="color-input" type="text" value="#7aa2f7" maxlength="7">
+                <input id="color-picker" type="color" value="#7aa2f7" aria-label="Color picker">
+              </div>
+
+              <div class="actions">
+                <button type="button" data-action="color-convert">Convert</button>
+              </div>
+
+              <div id="color-result" class="result">
+                <div><span>HEX</span><code>#7aa2f7</code></div>
+                <div><span>RGB</span><code>rgb(122, 162, 247)</code></div>
+                <div><span>HSL</span><code>hsl(221, 89%, 72%)</code></div>
+              </div>
+            </div>
+          </article>
+
+          <article class="tool" data-search="markdown preview text readme github">
+            <button class="tool-header" type="button" aria-expanded="false">
+              <span>
+                <strong>Markdown Preview</strong>
+                <small>Preview basic Markdown in your browser.</small>
+              </span>
+              <span class="toggle">+</span>
+            </button>
+
+            <div class="tool-body">
+              <div class="split">
+                <div>
+                  <label for="markdown-input">Markdown</label>
+                  <textarea id="markdown-input" spellcheck="false" placeholder="# hello&#10;&#10;**bold text**"></textarea>
+                </div>
+
+                <div>
+                  <label>Preview</label>
+                  <div id="markdown-preview" class="markdown-preview muted">
+                    Start typing to preview Markdown.
+                  </div>
+                </div>
+              </div>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="about">
+        <h2>About</h2>
+        <p>
+          Internet Toolbox is a small collection of useful browser-based utilities.
+          Everything currently runs locally in your browser.
+        </p>
+        <p>
+          Built with plain <code>HTML</code>, <code>CSS</code>, and <code>JavaScript</code>.
+        </p>
+      </section>
+    </main>
+
+    <footer>
+      <span>made by izzy.js</span>
+      <span id="visible-count">8 tools</span>
+    </footer>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

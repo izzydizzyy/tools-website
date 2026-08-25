@@ -1,6 +1,8 @@
 # Internet Toolbox | tools-website
 
 A simple collection of browser-based developer utilities made by `izzy.js`.
+NEW: You can do it @ https://tools.izzyy.me
+I'll be pushing new updates here & there, stay tuned!
 
 ## Included tools
 

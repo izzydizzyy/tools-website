@@ -29,6 +29,43 @@
 
     <main>
       <section>
+        <h2>Live Updates</h2>
+
+        <div class="live-panel">
+          <div class="live-head">
+            <p class="live-sub">Pulled straight from the <code>tools-website</code> GitHub repo.</p>
+            <button type="button" id="live-refresh" class="secondary-btn">Refresh</button>
+          </div>
+
+          <div class="live-grid">
+            <div class="live-card">
+              <span class="live-label">Latest commit</span>
+              <div id="live-commit" class="live-value muted">Loading…</div>
+            </div>
+            <div class="live-card">
+              <span class="live-label">Default branch</span>
+              <div id="live-branch" class="live-value muted">Loading…</div>
+            </div>
+            <div class="live-card">
+              <span class="live-label">Open issues</span>
+              <div id="live-issues" class="live-value muted">Loading…</div>
+            </div>
+            <div class="live-card">
+              <span class="live-label">Stars / Forks</span>
+              <div id="live-stats" class="live-value muted">Loading…</div>
+            </div>
+          </div>
+
+          <h3 class="live-history-title">Recent pushes</h3>
+          <ul id="live-history" class="live-history">
+            <li class="muted">Fetching commit history…</li>
+          </ul>
+
+          <p id="live-status" class="status"></p>
+        </div>
+      </section>
+
+      <section>
         <h2>Developer</h2>
 
         <div class="tool-list">
@@ -129,6 +166,112 @@
               </div>
             </div>
           </article>
+
+          <article class="tool" data-search="url encode decode uri component developer">
+            <button class="tool-header" type="button" aria-expanded="false">
+              <span>
+                <strong>URL Encoder / Decoder</strong>
+                <small>Encode or decode URI components.</small>
+              </span>
+              <span class="toggle">+</span>
+            </button>
+
+            <div class="tool-body">
+              <label for="url-input">Text / URL</label>
+              <textarea id="url-input" spellcheck="false" placeholder="https://example.com/?q=hello world"></textarea>
+
+              <div class="actions">
+                <button type="button" data-action="url-encode">Encode</button>
+                <button type="button" data-action="url-decode">Decode</button>
+                <button type="button" data-copy-target="url-input" class="secondary">Copy</button>
+              </div>
+
+              <p id="url-status" class="status"></p>
+            </div>
+          </article>
+
+          <article class="tool" data-search="hash generator sha256 sha1 md digest checksum developer">
+            <button class="tool-header" type="button" aria-expanded="false">
+              <span>
+                <strong>Hash Generator</strong>
+                <small>Generate SHA-1 / SHA-256 / SHA-512 digests.</small>
+              </span>
+              <span class="toggle">+</span>
+            </button>
+
+            <div class="tool-body">
+              <label for="hash-input">Text</label>
+              <textarea id="hash-input" spellcheck="false" placeholder="Enter text to hash..."></textarea>
+
+              <label for="hash-algo">Algorithm</label>
+              <select id="hash-algo">
+                <option value="SHA-1">SHA-1</option>
+                <option value="SHA-256" selected>SHA-256</option>
+                <option value="SHA-384">SHA-384</option>
+                <option value="SHA-512">SHA-512</option>
+              </select>
+
+              <label for="hash-output">Digest</label>
+              <input id="hash-output" type="text" readonly>
+
+              <div class="actions">
+                <button type="button" data-action="hash-generate">Generate</button>
+                <button type="button" data-copy-target="hash-output" class="secondary">Copy</button>
+              </div>
+            </div>
+          </article>
+
+          <article class="tool" data-search="jwt decoder json web token payload header developer">
+            <button class="tool-header" type="button" aria-expanded="false">
+              <span>
+                <strong>JWT Decoder</strong>
+                <small>Decode a JSON Web Token's header and payload.</small>
+              </span>
+              <span class="toggle">+</span>
+            </button>
+
+            <div class="tool-body">
+              <label for="jwt-input">Token</label>
+              <textarea id="jwt-input" spellcheck="false" placeholder="eyJhbGciOi..."></textarea>
+
+              <div class="actions">
+                <button type="button" data-action="jwt-decode">Decode</button>
+              </div>
+
+              <div id="jwt-result" class="result muted">
+                Paste a JWT to decode it.
+              </div>
+            </div>
+          </article>
+
+          <article class="tool" data-search="regex tester regular expression match developer">
+            <button class="tool-header" type="button" aria-expanded="false">
+              <span>
+                <strong>Regex Tester</strong>
+                <small>Test a regular expression against sample text.</small>
+              </span>
+              <span class="toggle">+</span>
+            </button>
+
+            <div class="tool-body">
+              <label for="regex-pattern">Pattern</label>
+              <input id="regex-pattern" type="text" placeholder="\b[\w.]+@[\w.]+\b">
+
+              <label for="regex-flags">Flags</label>
+              <input id="regex-flags" type="text" value="g" placeholder="g, i, m...">
+
+              <label for="regex-text">Test string</label>
+              <textarea id="regex-text" spellcheck="false" placeholder="Paste text to test against..."></textarea>
+
+              <div class="actions">
+                <button type="button" data-action="regex-test">Test</button>
+              </div>
+
+              <div id="regex-result" class="result muted">
+                Enter a pattern and some text.
+              </div>
+            </div>
+          </article>
         </div>
       </section>
 
@@ -192,6 +335,43 @@
               </div>
             </div>
           </article>
+
+          <article class="tool" data-search="discord embed generator json builder webhook">
+            <button class="tool-header" type="button" aria-expanded="false">
+              <span>
+                <strong>Embed JSON Builder</strong>
+                <small>Build a basic Discord embed JSON payload.</small>
+              </span>
+              <span class="toggle">+</span>
+            </button>
+
+            <div class="tool-body">
+              <label for="embed-title">Title</label>
+              <input id="embed-title" type="text" placeholder="Embed title">
+
+              <label for="embed-description">Description</label>
+              <textarea id="embed-description" spellcheck="false" placeholder="Embed description..."></textarea>
+
+              <div class="color-row">
+                <div>
+                  <label for="embed-color">Color</label>
+                  <input id="embed-color" type="text" value="#7aa2f7" maxlength="7">
+                </div>
+                <input id="embed-color-picker" type="color" value="#7aa2f7" aria-label="Embed color picker">
+              </div>
+
+              <label for="embed-footer">Footer</label>
+              <input id="embed-footer" type="text" placeholder="Footer text">
+
+              <div class="actions">
+                <button type="button" data-action="embed-build">Build JSON</button>
+                <button type="button" data-copy-target="embed-output" class="secondary">Copy</button>
+              </div>
+
+              <label for="embed-output">Output</label>
+              <textarea id="embed-output" spellcheck="false" readonly></textarea>
+            </div>
+          </article>
         </div>
       </section>
 
@@ -252,6 +432,99 @@
               </div>
             </div>
           </article>
+
+          <article class="tool" data-search="text case converter uppercase lowercase title camel snake kebab">
+            <button class="tool-header" type="button" aria-expanded="false">
+              <span>
+                <strong>Text Case Converter</strong>
+                <small>Convert text between common cases.</small>
+              </span>
+              <span class="toggle">+</span>
+            </button>
+
+            <div class="tool-body">
+              <label for="case-input">Text</label>
+              <textarea id="case-input" spellcheck="false" placeholder="Enter some text..."></textarea>
+
+              <div class="actions">
+                <button type="button" data-action="case-upper">UPPERCASE</button>
+                <button type="button" data-action="case-lower">lowercase</button>
+                <button type="button" data-action="case-title">Title Case</button>
+                <button type="button" data-action="case-sentence">Sentence case</button>
+                <button type="button" data-action="case-camel">camelCase</button>
+                <button type="button" data-action="case-snake">snake_case</button>
+                <button type="button" data-action="case-kebab">kebab-case</button>
+              </div>
+            </div>
+          </article>
+
+          <article class="tool" data-search="word counter character count text stats">
+            <button class="tool-header" type="button" aria-expanded="false">
+              <span>
+                <strong>Word & Character Counter</strong>
+                <small>Count words, characters, and reading time.</small>
+              </span>
+              <span class="toggle">+</span>
+            </button>
+
+            <div class="tool-body">
+              <label for="counter-input">Text</label>
+              <textarea id="counter-input" spellcheck="false" placeholder="Start typing or paste text..."></textarea>
+
+              <div id="counter-result" class="result">
+                <div><span>Words</span><code>0</code></div>
+                <div><span>Chars</span><code>0</code></div>
+                <div><span>No spaces</span><code>0</code></div>
+                <div><span>Read</span><code>0 min</code></div>
+              </div>
+            </div>
+          </article>
+
+          <article class="tool" data-search="lorem ipsum generator placeholder text">
+            <button class="tool-header" type="button" aria-expanded="false">
+              <span>
+                <strong>Lorem Ipsum Generator</strong>
+                <small>Generate placeholder paragraphs.</small>
+              </span>
+              <span class="toggle">+</span>
+            </button>
+
+            <div class="tool-body">
+              <label for="lorem-count">Paragraphs</label>
+              <input id="lorem-count" type="number" min="1" max="20" value="3">
+
+              <label for="lorem-output">Output</label>
+              <textarea id="lorem-output" spellcheck="false" readonly></textarea>
+
+              <div class="actions">
+                <button type="button" data-action="lorem-generate">Generate</button>
+                <button type="button" data-copy-target="lorem-output" class="secondary">Copy</button>
+              </div>
+            </div>
+          </article>
+
+          <article class="tool" data-search="slug generator url friendly slugify text">
+            <button class="tool-header" type="button" aria-expanded="false">
+              <span>
+                <strong>Slug Generator</strong>
+                <small>Turn text into a URL-friendly slug.</small>
+              </span>
+              <span class="toggle">+</span>
+            </button>
+
+            <div class="tool-body">
+              <label for="slug-input">Text</label>
+              <input id="slug-input" type="text" placeholder="My Awesome Blog Post!">
+
+              <label for="slug-output">Slug</label>
+              <input id="slug-output" type="text" readonly>
+
+              <div class="actions">
+                <button type="button" data-action="slug-generate">Generate</button>
+                <button type="button" data-copy-target="slug-output" class="secondary">Copy</button>
+              </div>
+            </div>
+          </article>
         </div>
       </section>
 
@@ -269,7 +542,7 @@
 
     <footer>
       <span>made by izzy.js</span>
-      <span id="visible-count">8 tools</span>
+      <span id="visible-count">17 tools</span>
     </footer>
   </div>
 
